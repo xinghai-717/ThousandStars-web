@@ -1,19 +1,19 @@
 ---
-title: 关于 PCL CE | 社区驱动的开源 Minecraft 启动器项目
-description: 了解 PCL CE与 PCL Community：这是一个由玩家共建的非官方开源社区项目，持续维护启动器生态、收集反馈并推动功能改进
-keywords: PCL社区,PCL Community,关于PCL,开源社区
+title: 关于 千星 启动器 | 开源的 千星 服务器专用启动器项目
+description: 了解 千星 启动器：这是一个由星海和bobo开发与维护的个人 千星(手机版+电脑版) 启动器项目
+keywords: 关于千星启动器
 aside: false
 ---
 
-# 关于 PCL Community
+# 关于 千星 启动器
 
-非官方的 PCL 社区玩家组织，不代表开发者龙腾猫跃和 PCL 官方。
+非官方的 千星 启动器，不代表开发者龙腾猫跃和 PCL 官方以及 FCL。
 
 <AboutPage
   :cards="[
-    { icon: 'mdi:github', title: 'GitHub', description: '查看源代码、提交 Issue 或参与贡献', href: 'https://github.com/PCL-Community' },
-    { icon: 'simple-icons:bilibili', title: 'B 站', description: '关注我们获取最新动态和教程视频', href: 'https://space.bilibili.com/3546847192811755' },
-    { icon: 'mdi:account-group', title: '加入组织', description: '参与社区讨论，共同建设 PCL 生态', href: 'https://github.com/orgs/PCL-Community/discussions/10' }
+    { icon: 'mdi:github', title: '电脑版GitHub', description: '查看源代码、提交 Issue 或参与贡献', href: 'https://github.com/xinghai-717/QianxingLauncher' },
+    { icon: 'mdi:github', title: '手机版GitHub', description: '查看源代码、提交 Issue 或参与贡献', href: 'https://github.com/Bobozwb/Thousand_Stars_Launcher_Phone' },
+    { icon: 'mdi:account-group', title: '加入QQ群', description: '提交服务器建议，参与服务器建设', href: 'https://qm.qq.com/cgi-bin/qm/qr?k=kmlnRU4-41pYDugOpQs-2__VLvihL0PI&jump_from=webapi&authKey=8bq6qFQjz/QH87OriSLabnaDGbeG7dX65H568vpRM+a+FrwpzWs5vnJbpHkTadNC' }
   ]"
   imageSrc="/img/pclce.png"
   imageAlt="PCL Community"
@@ -23,15 +23,6 @@ aside: false
 
 <AboutPage
   :cards="[
-    { icon: 'mdi:github', title: 'GitHub 开源仓库', description: '查看本网站源代码、提交 Issue 或参与贡献', href: 'https://github.com/PCL-Community/PCL2CE-web' }
+    { icon: 'mdi:github', title: 'GitHub 开源仓库', description: '查看本网站源代码、提交 Issue 或参与贡献', href: 'https://github.com/xinghai-717/ThousandStars-web' }
   ]"
 />
-
-## 关于下载链接
-
-- **GitHub Releases** —— [PCL-Community/PCL2-CE](https://github.com/PCL-Community/PCL2-CE/releases) github官方源
-
-感谢以下用户提供下载加速支持：
-
-- **线路 1** —— [fishcpy](https://github.com/fishcpy) 提供加速服务
-- **线路 2** —— [scfcn](https://github.com/scfcn) 提供加速服务

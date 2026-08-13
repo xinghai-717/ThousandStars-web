@@ -1,16 +1,16 @@
 ---
 layout: home
-title: PCL CE官网 | 开源免费的 Minecraft 启动器
-description: PCL CE是基于 PCL2 构建的开源免费 Minecraft 启动器，提供精准崩溃分析、多文件夹实例管理、资源一键下载与多账号支持
-keywords: PCL,PCL2,Minecraft启动器,我的世界启动器,开源启动器,崩溃分析,模组管理
+title: 千星 启动器官网 | 千星 服务器专用启动器
+description: 千星 启动器是 千星 服务器的专用启动器
+keywords: ThousandStars,千星启动器
 
 hero:
-  name: "PCL CE"
-  text: "开源免费的 Minecraft 启动器"
-  tagline: 基于 PCL2 构建，提供更强大的功能和更好的用户体验
+  name: "千星 启动器"
+  text: "千星 服务器的专用启动器"
+  tagline: 电脑版与手机版分别基于 PCL CE 、 FCL二次开发，提供更强大的服务器整合包安装功能和更好的用户体验
   image:
     src: /img/logo.ico
-    alt: PCL CE
+    alt: 千星 启动器
   actions:
     - theme: brand
       text: 立即下载  
@@ -21,45 +21,50 @@ hero:
 
 features:
   - icon: 🔍
-    title: 精准崩溃分析
-    details: 自动检测并分析游戏崩溃原因，提供详细的解决方案和建议，让你快速解决问题。
+    title: 服务器状态查询
+    details: 无需进服即可查看服务器在线人数、延迟等状态。
   - icon: 📁
-    title: 多文件夹管理
-    details: 支持多个游戏实例管理，不同版本、不同模组包完全隔离，轻松切换游戏环境。
+    title: 千星实例绑定
+    details: 绑定强行游戏实例，不允许其他实例启动，杜绝启动器导致的其他实例出现问题。
   - icon: 📦
-    title: 资源直接下载
-    details: 内置资源商店，支持直接下载光影、材质包、模组等资源，无需手动安装。
+    title: 整合包直接安装
+    details: 自动获取服务器整合包地址，支持直接下载并安装整合包，无需手动操作。
   - icon: 👤
-    title: 多账号支持
-    details: 支持多个 Minecraft 账号管理，快速切换不同账号，支持正版和离线模式。
+    title: 离线账号支持(电脑版特供)
+    details: 移除必须登录一次正版账户限制，确保离线玩家正常登录。
   - icon: ☕
-    title: Java 版本管理
-    details: 自动检测和管理 Java 版本，为不同的 Minecraft 版本选择最适合的 Java 环境。
+    title: Java 版本下载(手机版特供)
+    details: 仅下载JAVA 21避免下载无用的JAVA版本导致的宽带与存储空间浪费。
   - icon: 🔓
     title: 开源免费
-    details: 完全开源的项目，永久免费使用，社区驱动开发，持续更新和改进。
+    details: 完全开源的二次开发项目，永久免费使用，持续更新和改进。
 ---
 
 <HomeUnderline />
 
-<VideoSection
-  title="演示视频"
-  description="观看视频，了解 PCL CE 的强大功能"
-  videoSrc="/video/hero.mp4"
-/>
+<h2 style="text-align: center;">部分页面截图</h2>
 
 <ImageGallery :images="[
-  { url: '/img/f1.png', alt: 'PCL CE Screenshot 1' },
-  { url: '/img/x1.png', alt: 'PCL CE Screenshot 2' },
-  { url: '/img/x2.png', alt: 'PCL CE Screenshot 3' },
-  { url: '/img/x3.png', alt: 'PCL CE Screenshot 4' }
+  { url: '/img/f1.png', alt: 'Thousand Stars Screenshot 1' },
+  { url: '/img/x1.png', alt: 'Thousand Stars Screenshot 2' },
+  { url: '/img/x2.png', alt: 'Thousand Stars Screenshot 3' },
+  { url: '/img/x3.png', alt: 'Thousand Stars Screenshot 4' }
 ]" />
 
 <div class="contributors-section">
-  <h2 class="contributors-title">PCL CE 贡献者</h2>
-  <a href="https://github.com/PCL-Community/PCL2-CE/graphs/contributors" target="_blank" rel="noopener noreferrer">
-    <img src="https://contrib.rocks/image?repo=PCL-Community/PCL2-CE" alt="PCL CE 贡献者" />
-  </a>
+  <h2 class="contributors-title">千星 启动器开发者</h2>
+  <div style="display: flex; gap: 20px; align-items: center; justify-content: center;">
+    <a href="https://github.com/xinghai-717" target="_blank" rel="noopener noreferrer">
+      <img src="/img/xinghai.jpg" width="128" height="128" alt="千星 启动器开发者" />
+    </a>
+    <a href="https://thousand-stars.sourceforge.io" target="_blank" rel="noopener noreferrer">
+      <img src="/img/bobo.png" width="128" height="128" alt="千星 启动器开发者" />
+    </a>
+  </div>
+  <div style="display: flex; gap: 20px; align-items: center; justify-content: center;">
+    <h4 style="margin-right: 20px;">电脑版开发者</h4>
+    <h4>手机版开发者</h4>
+  </div>
 </div>
 
 <style>

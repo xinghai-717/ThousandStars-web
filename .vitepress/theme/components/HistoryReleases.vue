@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useData } from 'vitepress';
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { getMessages, type Lang } from '../../data/i18n';
 
 interface ReleaseAsset {
@@ -22,7 +22,6 @@ interface ReleaseItem {
 interface DisplayAsset {
   label: string;
   officialHref: string;
-  mirrorHref: string;
 }
 
 interface DisplayRelease {
@@ -34,11 +33,16 @@ interface DisplayRelease {
   assets: DisplayAsset[];
 }
 
-type SourceType = 'github' | 'mirror1';
+type SourceType = 'github';
+type AppType = 'pc' | 'mobile';
 
-const API_URL =
-  'https://api.github.com/repos/PCL-Community/PCL2-CE/releases?per_page=30';
-const SOURCE_MIRROR_BASE = 'https://download.fishcpy.top/dl/pclce/pcl2ce';
+// 根据类型获取对应的 API URL
+const getApiUrl = (type: AppType) => {
+  if (type === 'mobile') {
+    return 'https://api.github.com/repos/Bobozwb/Thousand_Stars_Launcher_Phone/releases?per_page=30';
+  }
+  return 'https://api.github.com/repos/xinghai-717/QianxingLauncher/releases?per_page=30';
+};
 
 const loading = ref(true);
 const error = ref<string | null>(null);
@@ -47,6 +51,10 @@ const selectedId = ref<number | null>(null);
 const menuOpen = ref(false);
 const sourceMenuOpen = ref(false);
 const selectedSource = ref<SourceType>('github');
+
+// 类型选择（置顶）
+const selectedType = ref<AppType>('pc');
+const typeMenuOpen = ref(false);
 
 const { lang } = useData();
 const messages = computed(() => {
@@ -61,37 +69,20 @@ function formatDate(value: string) {
   return date.toLocaleDateString();
 }
 
-function buildMirrorHref(tag: string, fileName: string) {
-  return `${SOURCE_MIRROR_BASE}/${encodeURIComponent(tag)}/${fileName}`;
-}
-
-function matchAssets(assets: ReleaseAsset[], tag: string): DisplayAsset[] {
-  const result: DisplayAsset[] = [];
-  const x64 = assets.find((asset) => /(x64|amd64)/i.test(asset.name));
-  const arm64 = assets.find((asset) => /arm64/i.test(asset.name));
-
-  if (x64) {
-    result.push({
-      label: messages.value.x64Label,
-      officialHref: x64.browser_download_url,
-      mirrorHref: buildMirrorHref(tag, x64.name),
-    });
-  }
-  if (arm64) {
-    result.push({
-      label: messages.value.arm64Label,
-      officialHref: arm64.browser_download_url,
-      mirrorHref: buildMirrorHref(tag, arm64.name),
-    });
-  }
-  return result;
+// 构建 assets 列表（直接显示所有资源）
+function buildAssets(assets: ReleaseAsset[]): DisplayAsset[] {
+  return assets.map((asset) => ({
+    label: asset.name,
+    officialHref: asset.browser_download_url,
+  }));
 }
 
 async function loadReleases() {
   loading.value = true;
   error.value = null;
+  const apiUrl = getApiUrl(selectedType.value);
   try {
-    const response = await fetch(API_URL, {
+    const response = await fetch(apiUrl, {
       headers: {
         Accept: 'application/vnd.github+json',
       },
@@ -101,17 +92,14 @@ async function loadReleases() {
     }
     const data: ReleaseItem[] = await response.json();
     const filtered = data.filter((item) => !item.prerelease && !item.draft);
-    releases.value = filtered.map((item) => {
-      const assets = matchAssets(item.assets || [], item.tag_name);
-      return {
-        id: item.id,
-        title: item.name || item.tag_name,
-        tag: item.tag_name,
-        date: formatDate(item.published_at),
-        url: item.html_url,
-        assets,
-      };
-    });
+    releases.value = filtered.map((item) => ({
+      id: item.id,
+      title: item.name || item.tag_name,
+      tag: item.tag_name,
+      date: formatDate(item.published_at),
+      url: item.html_url,
+      assets: buildAssets(item.assets || []),
+    }));
     selectedId.value = releases.value[0]?.id ?? null;
   } catch (err) {
     error.value = err instanceof Error ? err.message : String(err);
@@ -119,6 +107,11 @@ async function loadReleases() {
     loading.value = false;
   }
 }
+
+// 监听类型切换，重新加载数据
+watch(selectedType, () => {
+  void loadReleases();
+});
 
 onMounted(() => {
   void loadReleases();
@@ -134,42 +127,49 @@ const selectedRelease = computed(() => {
   return releases.value.find((item) => item.id === selectedId.value) || null;
 });
 
-// biome-ignore lint/correctness/noUnusedVariables: used in Vue template
-const selectedAssets = computed(() => {
-  if (!selectedRelease.value) return [];
-  return selectedRelease.value.assets.map((asset) => ({
-    label: asset.label,
-    href:
-      selectedSource.value === 'github' ? asset.officialHref : asset.mirrorHref,
-  }));
-});
-
-// biome-ignore lint/correctness/noUnusedVariables: used in Vue template
 const selectedSourceLabel = computed(() => {
   return selectedSource.value === 'github'
     ? messages.value.sourceGithub
     : messages.value.sourceMirror1;
 });
 
-// biome-ignore lint/correctness/noUnusedVariables: used in Vue template
+// 类型下拉控制
+function toggleTypeMenu() {
+  typeMenuOpen.value = !typeMenuOpen.value;
+  if (typeMenuOpen.value) {
+    menuOpen.value = false;
+    sourceMenuOpen.value = false;
+  }
+}
+
+function selectType(type: AppType) {
+  selectedType.value = type;
+  typeMenuOpen.value = false;
+}
+
+// 版本下拉控制
 function toggleMenu() {
   menuOpen.value = !menuOpen.value;
-  if (menuOpen.value) sourceMenuOpen.value = false;
+  if (menuOpen.value) {
+    sourceMenuOpen.value = false;
+    typeMenuOpen.value = false;
+  }
 }
 
-// biome-ignore lint/correctness/noUnusedVariables: used in Vue template
-function toggleSourceMenu() {
-  sourceMenuOpen.value = !sourceMenuOpen.value;
-  if (sourceMenuOpen.value) menuOpen.value = false;
-}
-
-// biome-ignore lint/correctness/noUnusedVariables: used in Vue template
 function selectRelease(id: number) {
   selectedId.value = id;
   menuOpen.value = false;
 }
 
-// biome-ignore lint/correctness/noUnusedVariables: used in Vue template
+// 来源下拉控制（保留）
+function toggleSourceMenu() {
+  sourceMenuOpen.value = !sourceMenuOpen.value;
+  if (sourceMenuOpen.value) {
+    menuOpen.value = false;
+    typeMenuOpen.value = false;
+  }
+}
+
 function selectSource(source: SourceType) {
   selectedSource.value = source;
   sourceMenuOpen.value = false;
@@ -180,11 +180,13 @@ function handleOutsideClick(event: MouseEvent) {
   if (!target) return;
   if (
     target.closest('.history-select-wrap') ||
-    target.closest('.history-source-select-wrap')
+    target.closest('.history-source-select-wrap') ||
+    target.closest('.history-type-select-wrap')
   )
     return;
   menuOpen.value = false;
   sourceMenuOpen.value = false;
+  typeMenuOpen.value = false;
 }
 </script>
 
@@ -195,6 +197,40 @@ function handleOutsideClick(event: MouseEvent) {
       <p>{{ messages.subtitle }}</p>
     </div>
 
+    <!-- ========== 类型选择（置顶） ========== -->
+    <div class="history-selector history-type-selector">
+      <label class="history-label">版本类型</label>
+      <div class="history-select-wrap history-type-select-wrap">
+        <button
+            type="button"
+            class="history-select"
+            @click="toggleTypeMenu"
+        >
+          <span class="history-select-main">
+            {{ selectedType === 'pc' ? '电脑版' : '手机版' }}
+          </span>
+          <span class="history-select-arrow" aria-hidden="true"></span>
+        </button>
+        <div v-if="typeMenuOpen" class="history-select-menu">
+          <button
+              type="button"
+              class="history-select-option"
+              @click="selectType('pc')"
+          >
+            电脑版
+          </button>
+          <button
+              type="button"
+              class="history-select-option"
+              @click="selectType('mobile')"
+          >
+            手机版
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 加载/错误/空状态 -->
     <div v-if="loading" class="history-state">
       <div class="history-loading"></div>
       <span>{{ messages.loading }}</span>
@@ -212,17 +248,19 @@ function handleOutsideClick(event: MouseEvent) {
       <span>{{ messages.empty }}</span>
     </div>
 
+    <!-- 数据展示 -->
     <div v-else class="history-list">
+      <!-- 版本选择下拉 -->
       <div class="history-selector">
         <label class="history-label" for="history-release-select">
           {{ messages.selectLabel }}
         </label>
         <div class="history-select-wrap">
           <button
-            id="history-release-select"
-            type="button"
-            class="history-select"
-            @click="toggleMenu"
+              id="history-release-select"
+              type="button"
+              class="history-select"
+              @click="toggleMenu"
           >
             <span class="history-select-main">
               {{ selectedRelease?.title || '' }}
@@ -234,11 +272,11 @@ function handleOutsideClick(event: MouseEvent) {
           </button>
           <div v-if="menuOpen" class="history-select-menu">
             <button
-              v-for="release in releases"
-              :key="release.id"
-              type="button"
-              class="history-select-option"
-              @click="selectRelease(release.id)"
+                v-for="release in releases"
+                :key="release.id"
+                type="button"
+                class="history-select-option"
+                @click="selectRelease(release.id)"
             >
               <span class="history-select-title">{{ release.title }}</span>
               <span class="history-select-tag">{{ release.tag }}</span>
@@ -247,16 +285,17 @@ function handleOutsideClick(event: MouseEvent) {
         </div>
       </div>
 
+      <!-- 来源下拉（保留） -->
       <div class="history-selector">
         <label class="history-label" for="history-source-select">
           {{ messages.sourceLabel }}
         </label>
         <div class="history-select-wrap history-source-select-wrap">
           <button
-            id="history-source-select"
-            type="button"
-            class="history-select"
-            @click="toggleSourceMenu"
+              id="history-source-select"
+              type="button"
+              class="history-select"
+              @click="toggleSourceMenu"
           >
             <span class="history-select-main">
               {{ selectedSourceLabel }}
@@ -265,30 +304,24 @@ function handleOutsideClick(event: MouseEvent) {
           </button>
           <div v-if="sourceMenuOpen" class="history-select-menu">
             <button
-              type="button"
-              class="history-select-option"
-              @click="selectSource('github')"
+                type="button"
+                class="history-select-option"
+                @click="selectSource('github')"
             >
-              <span class="history-select-title">{{ messages.sourceGithub }}</span>
-            </button>
-            <button
-              type="button"
-              class="history-select-option"
-              @click="selectSource('mirror1')"
-            >
-              <span class="history-select-title">{{ messages.sourceMirror1 }}</span>
+              {{ messages.sourceGithub }}
             </button>
           </div>
         </div>
       </div>
 
-      <div v-if="selectedAssets.length > 0" class="history-assets">
+      <!-- 下载按钮区域（显示当前版本所有 assets） -->
+      <div v-if="selectedRelease && selectedRelease.assets.length > 0" class="history-assets">
         <a
-          v-for="asset in selectedAssets"
-          :key="asset.href"
-          :href="asset.href"
-          class="history-btn"
-          target="_blank"
+            v-for="asset in selectedRelease.assets"
+            :key="asset.officialHref"
+            :href="asset.officialHref"
+            class="history-btn"
+            target="_blank"
         >
           {{ asset.label }}
         </a>
@@ -301,6 +334,37 @@ function handleOutsideClick(event: MouseEvent) {
 </template>
 
 <style scoped>
+/* 原有样式保持不变，新增 .history-type-select-wrap 无需额外样式，与现有一致 */
+/* 全部样式已在原文件中定义，此处不再重复 */
+/* 注意：确保 .history-select-wrap 通用选择器可匹配新增的类型容器 */
+/* 修复下拉框高度和间隔不一致 */
+.history-selector {
+  align-items: stretch; /* 让内部元素高度撑满 */
+}
+
+.history-select-wrap {
+  flex: 1;              /* 所有下拉框等宽 */
+  min-width: 0;         /* 防止内容溢出 */
+}
+
+.history-select {
+  height: 44px;         /* 固定高度，所有按钮等高 */
+  box-sizing: border-box;
+  min-width: 0;         /* 移除固定最小宽度，由 flex 控制 */
+}
+
+/* 下拉菜单项统一高度 */
+.history-select-option {
+  min-height: 44px;     /* 与按钮高度一致 */
+  padding: 0.65rem 0.9rem;
+  box-sizing: border-box;
+}
+
+/* 修正重复的 min-width 声明（原代码中有两处，可清理） */
+.history-select-wrap {
+  /* 只保留 flex:1 和 min-width:0 即可 */
+}
+
 .history-releases {
   max-width: 960px;
   margin: 0 auto;

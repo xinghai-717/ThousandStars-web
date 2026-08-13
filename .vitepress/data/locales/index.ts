@@ -34,6 +34,8 @@ export interface LocaleMessages {
     discussions: string;
     beian: string;
     copyright: string;
+    pcLabel: string;
+    mobileLabel: string;
   };
   download: {
     title: string;
@@ -78,6 +80,9 @@ export interface LocaleMessages {
     viewOnGithub: string;
     x64Label: string;
     arm64Label: string;
+    typeLabel: string;
+    pcLabel: string;
+    mobileLabel: string;
   };
   about: {
     title: string;
@@ -194,40 +199,46 @@ export const getFooterData = (lang: Lang): FooterData => {
           ],
         },
         {
-          title: msgs.footer.community,
+          title: msgs.footer.pcLabel,
           links: [
             {
-              name: 'GitHub',
-              link: 'https://github.com/PCL-Community',
+              name: 'Github',
+              link: 'https://github.com/xinghai-717/QianxingLauncher',
               icon: 'mdi:github',
             },
             {
               name: msgs.footer.feedback,
-              link: 'https://github.com/PCL-Community/PCL2-CE/issues',
+              link: 'https://github.com/xinghai-717/QianxingLauncher/issues',
               icon: 'mdi:bug',
             },
             {
               name: msgs.footer.discussions,
-              link: 'https://github.com/orgs/PCL-Community/discussions',
+              link: 'https://github.com/xinghai-717/QianxingLauncher/discussions',
+              icon: 'mdi:forum',
+            },
+          ],
+        },
+        {
+          title: msgs.footer.mobileLabel,
+          links: [
+            {
+              name: 'Github',
+              link: 'https://github.com/Bobozwb/Thousand_Stars_Launcher_Phone',
+              icon: 'mdi:github',
+            },
+            {
+              name: msgs.footer.feedback,
+              link: 'https://github.com/Bobozwb/Thousand_Stars_Launcher_Phone/issues',
+              icon: 'mdi:bug',
+            },
+            {
+              name: msgs.footer.discussions,
+              link: 'https://github.com/Bobozwb/Thousand_Stars_Launcher_Phone/discussions',
               icon: 'mdi:forum',
             },
           ],
         },
       ],
-      beian: {
-        showIcon: true,
-        icp: {
-          number: beianNumber,
-          link: 'https://beian.miit.gov.cn/',
-          rel: 'nofollow',
-        },
-      },
-      author: {
-        name: 'PCL Community',
-        link: 'https://github.com/PCL-Community',
-        startYear: 2024,
-        text: msgs.footer.copyright,
-      },
     },
     en: {
       group: [
@@ -248,40 +259,46 @@ export const getFooterData = (lang: Lang): FooterData => {
           ],
         },
         {
-          title: msgs.footer.community,
+          title: msgs.footer.pcLabel,
           links: [
             {
-              name: 'GitHub',
-              link: 'https://github.com/PCL-Community',
+              name: 'Github',
+              link: 'https://github.com/xinghai-717/QianxingLauncher',
               icon: 'mdi:github',
             },
             {
               name: msgs.footer.feedback,
-              link: 'https://github.com/PCL-Community/PCL2-CE/issues',
+              link: 'https://github.com/xinghai-717/QianxingLauncher/issues',
               icon: 'mdi:bug',
             },
             {
               name: msgs.footer.discussions,
-              link: 'https://github.com/orgs/PCL-Community/discussions',
+              link: 'https://github.com/xinghai-717/QianxingLauncher/discussions',
+              icon: 'mdi:forum',
+            },
+          ],
+        },
+        {
+          title: msgs.footer.mobileLabel,
+          links: [
+            {
+              name: 'Github',
+              link: 'https://github.com/Bobozwb/Thousand_Stars_Launcher_Phone',
+              icon: 'mdi:github',
+            },
+            {
+              name: msgs.footer.feedback,
+              link: 'https://github.com/Bobozwb/Thousand_Stars_Launcher_Phone/issues',
+              icon: 'mdi:bug',
+            },
+            {
+              name: msgs.footer.discussions,
+              link: 'https://github.com/Bobozwb/Thousand_Stars_Launcher_Phone/discussions',
               icon: 'mdi:forum',
             },
           ],
         },
       ],
-      beian: {
-        showIcon: true,
-        icp: {
-          number: beianNumber,
-          link: 'https://beian.miit.gov.cn/',
-          rel: 'nofollow',
-        },
-      },
-      author: {
-        name: 'PCL Community',
-        link: 'https://github.com/PCL-Community',
-        startYear: 2024,
-        text: msgs.footer.copyright,
-      },
     },
   };
   return footerData[lang];

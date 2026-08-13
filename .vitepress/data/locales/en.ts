@@ -37,6 +37,8 @@ export const en: LocaleMessages = {
     discussions: 'Discussions',
     beian: '京ICP备2025138063号',
     copyright: 'MIT License.',
+    pcLabel: 'PC',
+    mobileLabel: 'Mobile',
   },
 
   // Download page
@@ -84,6 +86,9 @@ export const en: LocaleMessages = {
     viewOnGithub: 'View on GitHub',
     x64Label: 'Download X64',
     arm64Label: 'Download ARM64',
+    typeLabel: 'Version Type',
+    pcLabel: 'PC',
+    mobileLabel: 'Mobile',
   },
 
   // About page

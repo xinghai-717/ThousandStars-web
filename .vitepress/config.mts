@@ -4,16 +4,15 @@ import { navTranslations, themeConfigTranslations } from './data/i18n';
 
 // SEO 相关常量
 const SITE_URL = 'https://pclce-web.demo.fis.ink';
-const SITE_NAME = 'PCL CE';
+const SITE_NAME = '千星 启动器';
 const DEFAULT_DESCRIPTION =
-  'PCL CE是基于 PCL2 构建的开源免费 Minecraft 启动器，提供精准崩溃分析、多文件夹实例管理、资源一键下载与多账号支持';
-const DEFAULT_KEYWORDS =
-  'PCL,PCL2,Minecraft启动器,我的世界启动器,开源启动器,崩溃分析,模组管理,Java管理';
+  '千星 启动器电脑版，千星 启动器手机版分别是基于 PCL CE 、 FCL二次开发的启动器，提供更强大的功能服务器整合包安装功能和更好的用户体验';
+const DEFAULT_KEYWORDS = 'ThousandStars,千星启动器';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   srcDir: './src',
-  title: 'PCL CE',
+  title: '千星 启动器',
   description: '开源免费的 Minecraft 启动器',
   cleanUrls: true,
   sitemap: {
@@ -143,8 +142,8 @@ export default defineConfig({
     root: {
       label: '简体中文',
       lang: 'zh-CN',
-      title: 'PCL CE',
-      description: '开源免费的 Minecraft 启动器，支持精准崩溃分析与多版本管理',
+      title: '千星 启动器',
+      description: '千星 服务器的专用启动器',
       themeConfig: {
         nav: navTranslations['zh-CN'],
         ...themeConfigTranslations['zh-CN'],
@@ -153,9 +152,8 @@ export default defineConfig({
     en: {
       label: 'English',
       lang: 'en',
-      title: 'PCL CE',
-      description:
-        'Open Source & Free Minecraft Launcher with Accurate Crash Analysis',
+      title: 'Thousand Stars launcher',
+      description: 'Dedicated launcher for Thousand Stars server',
       themeConfig: {
         nav: navTranslations.en,
         ...themeConfigTranslations.en,

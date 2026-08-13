@@ -37,6 +37,8 @@ export const zh: LocaleMessages = {
     discussions: '讨论区',
     beian: '京ICP备2025138063号',
     copyright: 'MIT License.',
+    pcLabel: '电脑版',
+    mobileLabel: '手机版',
   },
 
   // 下载页面
@@ -85,6 +87,9 @@ export const zh: LocaleMessages = {
     viewOnGithub: '在 GitHub 查看详情',
     x64Label: '下载 X64',
     arm64Label: '下载 ARM64',
+    typeLabel: '版本类型',
+    pcLabel: '电脑版',
+    mobileLabel: '手机版',
   },
 
   // 关于页面
