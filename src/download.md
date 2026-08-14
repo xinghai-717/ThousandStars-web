@@ -23,11 +23,16 @@ keywords: 千星启动器下载,启动器下载
 
 ## 下载链接
 
+::: tip 温馨提示
+中国大陆优先推荐 **Sourceforge** 下载。
+:::
+
 ### 电脑版 X64 版本
 
 <MirrorGrid
   :items="[
     { href: 'https://github.com/xinghai-717/QianxingLauncher/releases/download/v1.1.2/Thousand_Stars.exe', label: 'GitHub' },
+    { href: 'https://sourceforge.net/projects/thousand-stars/files/Thousand_Stars.exe/download', label: 'Sourceforge' },
   ]"
 />
 
@@ -36,6 +41,7 @@ keywords: 千星启动器下载,启动器下载
 <MirrorGrid
   :items="[
   { href: 'https://github.com/Bobozwb/Thousand_Stars_Launcher_Phone/releases/download/v0.0.0.1/Thousand_Stars_Launcher_Phone.apk', label: 'GitHub' },
+  { href: 'https://sourceforge.net/projects/thousand-stars/files/Thousand_Stars_Launcher_Phone.apk/download', label: 'Sourceforge' },
   ]"
 />
 

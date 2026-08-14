@@ -1,6 +1,6 @@
 ---
 title: Download Thousand Stars Launcher Latest Version | Windows X64 & Android Server-Specific Launcher
-description: Download the latest stable version of Thousand Stars Launcher, supporting Windows X64 and Android. Official GitHub links and historical release entries are provided.
+description: Download the latest stable version of Thousand Stars Launcher, supporting Windows X64 and Android. Official GitHub and Sourceforge links with historical release entries are provided.
 keywords: Thousand Stars Launcher download, launcher download
 ---
 
@@ -23,11 +23,16 @@ Mobile Version:
 
 ## Download Links
 
+::: tip Note
+**Sourceforge** is highly recommended for users in China.
+:::
+
 ### PC X64 Version
 
 <MirrorGrid
 :items="[
 { href: 'https://github.com/xinghai-717/QianxingLauncher/releases/download/v1.1.2/Thousand_Stars.exe', label: 'GitHub' },
+{ href: 'https://sourceforge.net/projects/thousand-stars/files/Thousand_Stars.exe/download', label: 'Sourceforge' },
 ]"
 />
 
@@ -36,6 +41,7 @@ Mobile Version:
 <MirrorGrid
 :items="[
 { href: 'https://github.com/Bobozwb/Thousand_Stars_Launcher_Phone/releases/download/v0.0.0.1/Thousand_Stars_Launcher_Phone.apk', label: 'GitHub' },
+{ href: 'https://sourceforge.net/projects/thousand-stars/files/Thousand_Stars_Launcher_Phone.apk/download', label: 'Sourceforge' },
 ]"
 />
 
