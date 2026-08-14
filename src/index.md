@@ -45,10 +45,17 @@ features:
 <h2 style="text-align: center;">部分页面截图</h2>
 
 <ImageGallery :images="[
-  { url: '/img/f1.png', alt: 'Thousand Stars Screenshot 1' },
-  { url: '/img/x1.png', alt: 'Thousand Stars Screenshot 2' },
-  { url: '/img/x2.png', alt: 'Thousand Stars Screenshot 3' },
-  { url: '/img/x3.png', alt: 'Thousand Stars Screenshot 4' }
+  { url: '/img/f1.png', alt: 'Thousand Stars Computer Screenshot 1' },
+  { url: '/img/x1.png', alt: 'Thousand Stars Computer Screenshot 2' },
+  { url: '/img/x2.png', alt: 'Thousand Stars Computer Screenshot 3' },
+  { url: '/img/x3.png', alt: 'Thousand Stars Computer Screenshot 4' }
+]" />
+<ImageGallery :images="[
+  { url: '/img/f2.jpg', alt: 'Thousand Stars Phone Screenshot 1' },
+  { url: '/img/x4.jpg', alt: 'Thousand Stars Phone Screenshot 2' },
+  { url: '/img/x5.jpg', alt: 'Thousand Stars Phone Screenshot 3' },
+  { url: '/img/x6.jpg', alt: 'Thousand Stars Phone Screenshot 4' },
+  { url: '/img/x7.jpg', alt: 'Thousand Stars Phone Screenshot 5' }
 ]" />
 
 <div class="contributors-section">
