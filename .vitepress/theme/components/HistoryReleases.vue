@@ -198,8 +198,8 @@ function handleOutsideClick(event: MouseEvent) {
     </div>
 
     <!-- ========== 类型选择（置顶） ========== -->
-    <div class="history-selector history-type-selector">
-      <label class="history-label">版本类型</label>
+    <div class="history-selector history-type-selector" style="margin-bottom:10px">
+      <label class="history-label">{{ messages.typeLabel }}</label>
       <div class="history-select-wrap history-type-select-wrap">
         <button
             type="button"
@@ -207,7 +207,7 @@ function handleOutsideClick(event: MouseEvent) {
             @click="toggleTypeMenu"
         >
           <span class="history-select-main">
-            {{ selectedType === 'pc' ? '电脑版' : '手机版' }}
+            {{ selectedType === 'pc' ? messages.pcLabel : messages.mobileLabel }}
           </span>
           <span class="history-select-arrow" aria-hidden="true"></span>
         </button>
@@ -217,14 +217,14 @@ function handleOutsideClick(event: MouseEvent) {
               class="history-select-option"
               @click="selectType('pc')"
           >
-            电脑版
+            {{ messages.pcLabel }}
           </button>
           <button
               type="button"
               class="history-select-option"
               @click="selectType('mobile')"
           >
-            手机版
+            {{ messages.mobileLabel }}
           </button>
         </div>
       </div>
