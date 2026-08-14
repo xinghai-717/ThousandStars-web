@@ -20,8 +20,8 @@
   "include": [
     ".vitepress/**/*.ts",
     ".vitepress/**/*.vue",
-    "docs/**/*.md",
-    "docs/.vitepress/**/*.ts"
+    "**/*.md",
+    ".vitepress/**/*.ts"
   ],
-  "exclude": ["node_modules", "docs/.vitepress/dist", "docs/.vitepress/cache"]
+  "exclude": ["node_modules", ".vitepress/dist", ".vitepress/cache"]
 }
