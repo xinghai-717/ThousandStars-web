@@ -1,7 +1,7 @@
 ---
-title: Download Thousand Stars Launcher Latest Release | Windows X64 / ARM64 Open Source Free Minecraft Launcher
-description: Download the latest stable version of Thousand Stars Launcher, supporting Windows X64 and ARM64 architectures, with multiple mirror links and historical release entries
-keywords: Thousand Stars download, Minecraft launcher download, launcher download
+title: Download Thousand Stars Launcher Latest Version | Windows X64 & Android Server-Specific Launcher
+description: Download the latest stable version of Thousand Stars Launcher, supporting Windows X64 and Android. Official GitHub links and historical release entries are provided.
+keywords: Thousand Stars Launcher download, launcher download
 ---
 
 # Thousand Stars Launcher Download
@@ -10,17 +10,20 @@ keywords: Thousand Stars download, Minecraft launcher download, launcher downloa
 
 ### Privacy Policy Notice
 
-By clicking any download button below and running the program, you agree to our privacy policy. Please click the link below to view the privacy policy:
+By clicking any download button below and running Thousand Stars Launcher, you agree to our privacy policy and the privacy policies of the original projects.
 
-[https://www.pclc.cc/privacy/](https://www.pclc.cc/privacy/)
+Our Privacy Policy:
+[Our Privacy Policy](/privacy)
 
-You can also download directly from the links below
+PC Version:
+[PCL CE Privacy Policy](https://www.pclc.cc/privacy/)
+
+Mobile Version:
+[FCL Privacy Policy](http://www.gychenliang.top/a/privacy/3236669baaa2ab736fb1a9d1b8d6f678)
 
 ## Download Links
 
 ### PC X64 Version
-
-For most Windows PCs
 
 <MirrorGrid
 :items="[
@@ -38,6 +41,6 @@ For most Windows PCs
 
 ## Historical Versions
 
-If you need an older version of Thousand Stars Launcher, you can download from the following link:
+If you need an older version of Thousand Stars Launcher, you can download from the link below:
 
 [Historical Versions](/en/history){.mirror-btn}

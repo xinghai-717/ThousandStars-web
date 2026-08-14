@@ -1,26 +1,29 @@
 ---
-title: 下载 PCL CE最新版 | Windows X64 / ARM64 开源免费 Minecraft 启动器
-description: 在此下载 PCL CE最新稳定版本，支持 Windows X64 与 ARM64 架构，并提供多个镜像线路与历史版本入口
-keywords: PCL下载,Minecraft启动器下载,PCL社区版下载,启动器下载
+title: 下载 千星 启动器最新版 | Windows X64 Android 千星 服务器专用启动器
+description: 在此下载 千星 启动器最新稳定版本，支持 Windows X64 与 Android，提供Github官方链接与历史版本入口
+keywords: 千星启动器下载,启动器下载
 ---
 
-# PCL CE下载
+# 千星 启动器下载
 
 ## 最新稳定版
 
 ### 隐私协议提示
 
-如果您点击下方任意下载并运行程序，代表同意我们的隐私协议，隐私协议请点击下方链接查看：
+如果您点击下方任意下载并运行 千星 启动器，代表同意我们及原项目的隐私协议
 
-[https://www.pclc.cc/privacy/](https://www.pclc.cc/privacy/)
+我们的隐私协议:
+[我们的隐私协议](/privacy)
 
-你可以直接在下方的链接中下载
+电脑版:
+[PCL CE隐私协议](https://www.pclc.cc/privacy/)
+
+手机版:
+[FCL 隐私协议](http://www.gychenliang.top/a/privacy/3236669baaa2ab736fb1a9d1b8d6f678)
 
 ## 下载链接
 
 ### 电脑版 X64 版本
-
-适用于大多数 Windows 电脑
 
 <MirrorGrid
   :items="[
