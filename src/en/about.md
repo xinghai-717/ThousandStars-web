@@ -15,8 +15,8 @@ Unofficial Thousand Stars launcher, does not represent the developer LongTengMao
 { icon: 'mdi:github', title: 'Mobile GitHub', description: 'View source code, submit issues or contribute', href: 'https://github.com/Bobozwb/Thousand_Stars_Launcher_Phone' },
 { icon: 'mdi:account-group', title: 'Join QQ Group', description: 'Submit server suggestions and participate in server development', href: 'https://qm.qq.com/cgi-bin/qm/qr?k=kmlnRU4-41pYDugOpQs-2__VLvihL0PI&jump_from=webapi&authKey=8bq6qFQjz/QH87OriSLabnaDGbeG7dX65H568vpRM+a+FrwpzWs5vnJbpHkTadNC' }
 ]"
-imageSrc="/img/pclce.png"
-imageAlt="PCL Community"
+imageSrc="/img/ThousandStars.png"
+imageAlt="ThousandStars Launcher"
 />
 
 # About this website

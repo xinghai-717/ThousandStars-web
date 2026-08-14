@@ -163,6 +163,5 @@ export default defineConfig({
 
   themeConfig: {
     logo: '/img/logo.ico',
-    socialLinks: [{ icon: 'github', link: 'https://github.com/PCL-Community' }],
   },
 });
